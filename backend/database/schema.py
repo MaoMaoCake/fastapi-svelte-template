@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, JSON, DateTime, ForeignKey, DECIMAL, BLOB, Date, Boolean
+from sqlalchemy import Column, Integer, String, JSON, \
+    DateTime, ForeignKey, DECIMAL, BLOB, Date, Boolean
 from sqlalchemy.orm import declarative_base
 
 from .utils import current_datetime, generate_salt
@@ -7,15 +8,23 @@ Base = declarative_base()
 
 
 class BaseTXN(Base):
+    """
+    Base class for all transactions
+    """
     __abstract__ = True
     id = Column(Integer, primary_key=True, autoincrement=True)
-    created_at = Column(DateTime, nullable=False, default=current_datetime())
-    updated_at = Column(DateTime, nullable=False, default=current_datetime(), onupdate=current_datetime())
+    created_at = Column(DateTime, nullable=False,
+                        default=current_datetime())
+    updated_at = Column(DateTime, nullable=False,
+                        default=current_datetime(), onupdate=current_datetime())
     created_by = Column(String, nullable=False)
     updated_by = Column(String, nullable=False)
 
 
 class UserDB(BaseTXN):
+    """
+    User Class
+    """
     __tablename__ = "users"
     username = Column(String, nullable=False, unique=True)
     email = Column(String, nullable=False, unique=True)
