@@ -26,6 +26,6 @@ def generate_salt(salt_length: int = 8):
     rng = random.SystemRandom()
     salt = []
     for _ in range(salt_length):
-        choice = rng.randint(0, 62)
+        choice = rng.randint(0, 61)
         salt.append(valid_chars[choice])
     return "".join(salt)
