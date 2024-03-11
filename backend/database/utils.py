@@ -17,10 +17,15 @@ def is_integer(n):
 
 
 def generate_salt(salt_length: int = 8):
+    """
+    Generate a random string to be used as salt for password
+    :param salt_length:
+    :return:
+    """
     valid_chars = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     rng = random.SystemRandom()
     salt = []
     for _ in range(salt_length):
-        choice = rng.randint(0, 63)
+        choice = rng.randint(0, 62)
         salt.append(valid_chars[choice])
     return "".join(salt)

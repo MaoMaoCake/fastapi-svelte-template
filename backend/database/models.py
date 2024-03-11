@@ -4,6 +4,7 @@ Database CRUD models
 from typing import Optional
 from pydantic import BaseModel
 
+
 class CreateEntryResponse(BaseModel):
     """
     Return class for creating entries
@@ -12,6 +13,7 @@ class CreateEntryResponse(BaseModel):
     error: Optional[str]
     created_id: int
 
+
 class UpdateEntryResponse(BaseModel):
     """
     Return class for Updating entries
@@ -19,9 +21,10 @@ class UpdateEntryResponse(BaseModel):
     success: bool
     error: Optional[str]
 
+
 class DeleteEntryResponse(BaseModel):
     """
     Return class for Deleting entries
     """
     success: bool
-    error : Optional[str]
+    error: Optional[str]
